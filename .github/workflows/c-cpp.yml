@@ -1,0 +1,39 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential freeglut3-dev libglu1-mesa-dev mesa-common-dev
+
+    - name: Build
+      run: make
+
+    # If you have tests, you can add a test step
+    #- name: Test
+    #  run: make test
+    
+    # If you want to upload build artifacts
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-artifacts
+        path: ./draw_object
+
+    # Optionally, you can also add a clean-up step
+    - name: Clean
+      run: make clean
