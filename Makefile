@@ -9,7 +9,7 @@ LDFLAGS := -lglut -lGLU -lGL
 TARGET := draw_object
 
 # Source files
-SRCS := main.cpp Objects/LineDDA.cpp
+SRCS := main.cpp Objects/LineDDA.cpp Objects/LineBresenham.cpp
 
 # Object files (replace .cpp with .o)
 OBJS := $(SRCS:.cpp=.o)

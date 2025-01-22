@@ -1,6 +1,7 @@
 #include <GL/glut.h>
 #include "Objects/DrawableObject.hpp"
 #include "Objects/LineDDA.hpp"
+#include "Objects/LineBresenham.hpp"
 #include <ctime>
 #include <iostream>
 #include <fstream>
@@ -59,6 +60,7 @@ void parseInputFile(const std::string& filename) {
                 int x1, y1, x2, y2;
                 iss >> x1 >> y1 >> x2 >> y2;
                 // Create LineBresenham object and add to objects vector
+                objects.push_back(new LineBresenham(x1, y1, x2, y2));
                 break;
             }
             case CIRCLE_MIDPOINT: {
